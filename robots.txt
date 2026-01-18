@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://igor952.github.io/klimatyzacja-strona/sitemap.xml
+Sitemap: https://igor952.github.io/klimatyzacja-strony/sitemap.xml
+
