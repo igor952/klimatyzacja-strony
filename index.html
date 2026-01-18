@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Montaż klimatyzacji – miasta w Polsce</title>
+<meta name="description" content="Pomagamy znaleźć wykonawcę montażu klimatyzacji w miastach w całej Polsce. Wybierz miasto i skontaktuj się z wykonawcą.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>Montaż klimatyzacji – miasta w Polsce</h1>
+
+  <p>
+    Serwis informacyjny pomagający w kontakcie z wykonawcami usług montażu klimatyzacji.
+    Wybierz miasto, aby przejść do strony informacyjnej i zostawić zgłoszenie.
+  </p>
+
+  <h2>Dostępne lokalizacje</h2>
+
+  <ul id="lista-miast" class="city-list">
+    <li>Ładowanie listy miast…</li>
+  </ul>
+
+  <hr>
+
+  <p class="disclaimer">
+    Strona ma charakter informacyjny i pośredniczący. Nie jesteśmy bezpośrednim wykonawcą usług.
+  </p>
+</div>
+
+<script>
+fetch("pages.json")
+  .then(response => response.json())
+  .then(data => {
+    const lista = document.getElementById("lista-miast");
+    lista.innerHTML = "";
+
+    data.forEach(page => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+
+      a.href = page.file;
+      a.textContent = page.title;
+
+      li.appendChild(a);
+      lista.appendChild(li);
+    });
+  })
+  .catch(() => {
+    document.getElementById("lista-miast").innerHTML =
+      "<li>Nie udało się załadować listy miast.</li>";
+  });
+</script>
+
+</body>
+</html>
